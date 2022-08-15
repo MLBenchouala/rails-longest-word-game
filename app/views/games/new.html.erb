@@ -1,0 +1,11 @@
+<h1>New Game:</h1>
+<h2>Here are the letters</h2>
+<% @letters.each do |letter| %>
+ <p><%= letter.capitalize %></p>
+<% end %>
+<form action="score" method="POST" data-turbo="false">
+  <input type="text" name="attempt">
+  <input type="text" name="grid" value="<%= @letters.join(',').split(',') %>">
+  <input type="submit">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
